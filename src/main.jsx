@@ -5,6 +5,7 @@ import './index.css'
 import { ApolloClient, ApolloProvider, HttpLink, InMemoryCache } from '@apollo/client'
 
 const client = new ApolloClient({
+  connectToDevTools: true,
   link: new HttpLink({
     uri: 'http://localhost:4000',
   }),

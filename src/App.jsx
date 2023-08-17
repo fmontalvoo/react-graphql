@@ -2,6 +2,7 @@ import { gql, useQuery } from '@apollo/client'
 
 import reactLogo from './assets/react.svg'
 import './App.css'
+import { Persons } from './Persons'
 
 const FIND_ALL = gql`
   query {
@@ -33,25 +34,7 @@ function App() {
       {
         loading
           ? <p>Loading...</p>
-          : (<table>
-            <thead>
-              <tr>
-                <th>Name</th>
-                <th>Phone</th>
-                <th>Address</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.findAll.map(({ id, name, phone, address }) => (
-                <tr key={id}>
-                  <td>{name}</td>
-                  <td>{phone}</td>
-                  <td>{address.city}, {address.street}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-          )
+          : <Persons persons={data?.findAll} />
       }
     </>
   )
