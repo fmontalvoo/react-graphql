@@ -1,11 +1,12 @@
+import { useState } from 'react'
+
+import { Notify } from './Notify'
 import { Persons } from './Persons'
 import { PersonForm } from './PersonForm'
 import { usePersons } from './persons/hooks/custom'
 
 import './App.css'
 import reactLogo from './assets/react.svg'
-import { useState } from 'react'
-import { Notify } from './Notify'
 
 function App() {
   const { data, error, loading } = usePersons()

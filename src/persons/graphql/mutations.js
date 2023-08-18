@@ -13,3 +13,13 @@ mutation savePerson($name: String!, $city: String!, $street: String!, $phone: St
     }
 }
 `
+
+export const UPDATE_NUMBER = gql`
+mutation editNumber($id: ID!, $phone: String!){
+    updateNumber(id: $id, phone: $phone) {
+      id
+      name
+      phone
+    }
+}
+`

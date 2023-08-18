@@ -3,6 +3,7 @@
 
 import { useState } from 'react'
 import { useEffect } from 'react'
+import { PhoneForm } from './PhoneForm'
 import { usePerson } from './persons/hooks/custom'
 
 
@@ -26,6 +27,7 @@ export const Persons = ({ persons }) => {
                 <h2>{person.name}</h2>
                 <p>{person.phone}</p>
                 <p>{person.address.street}, {person.address.city}</p>
+                <PhoneForm id={person.id} />
             </div>
         )
 
