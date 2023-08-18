@@ -1,27 +1,13 @@
-import { gql, useQuery } from '@apollo/client'
-
-import reactLogo from './assets/react.svg'
-import './App.css'
 import { Persons } from './Persons'
 import { PersonForm } from './PersonForm'
+import { usePersons } from './persons/hooks/custom'
 
-const FIND_ALL = gql`
-  query {
-    findAll {
-      id
-      name
-      phone
-      address {
-        city
-        street
-      }
-    }
-  }
-`
+import './App.css'
+import reactLogo from './assets/react.svg'
 
 function App() {
 
-  const { data, error, loading } = useQuery(FIND_ALL, { pollInterval: 2000 })
+  const { data, error, loading } = usePersons()
 
   if (error)
     return <span style='color: red'>{error}</span>

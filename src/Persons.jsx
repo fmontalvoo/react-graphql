@@ -2,25 +2,12 @@
 /* eslint-disable no-unused-vars */
 
 import { useState } from 'react'
-import { gql, useLazyQuery } from '@apollo/client'
 import { useEffect } from 'react'
+import { usePerson } from './persons/hooks/custom'
 
-const FIND_BY_NAME = gql`
-query getByName($name: String!) {
-    findByName(name: $name) {
-      id
-      name
-      phone
-      address {
-        city
-        street
-      }
-    }
-}
-`
 
 export const Persons = ({ persons }) => {
-    const [getPerson, result] = useLazyQuery(FIND_BY_NAME)
+    const [getPerson, result] = usePerson()
     const [person, setPerson] = useState(null)
 
     const findPerson = name => {

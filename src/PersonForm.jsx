@@ -1,24 +1,10 @@
 /* eslint-disable no-unused-vars */
+import { useAddPerson } from './persons/hooks/custom'
 
-import { gql, useMutation } from '@apollo/client'
-
-const ADD_PERSON = gql`
-mutation savePerson($name: String!, $city: String!, $street: String!, $phone: String) {
-    addPerson(name: $name, city: $city, street: $street, phone: $phone) {
-        id
-        name
-        phone
-        address {
-            city
-            street
-        }
-    }
-}
-`
 
 export const PersonForm = () => {
 
-    const [addPerson] = useMutation(ADD_PERSON)
+    const [addPerson] = useAddPerson()
 
     const handleSubmit = (event) => {
         event.preventDefault()
