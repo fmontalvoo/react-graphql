@@ -12,10 +12,15 @@ export const usePerson = () => {
     return result
 }
 
-export const useAddPerson = () => {
+export const useAddPerson = ({ notifyError }) => {
     const result = useMutation(
         ADD_PERSON,
-        { refetchQueries: [{ query: FIND_ALL }] }
+        {
+            refetchQueries: [{ query: FIND_ALL }],
+            onError: (error) => {
+                notifyError(error.graphQLErrors[0].message)
+            }
+        }
     )
     return result
 }

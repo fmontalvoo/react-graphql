@@ -4,13 +4,20 @@ import { usePersons } from './persons/hooks/custom'
 
 import './App.css'
 import reactLogo from './assets/react.svg'
+import { useState } from 'react'
+import { Notify } from './Notify'
 
 function App() {
-
   const { data, error, loading } = usePersons()
+  const [errorMessage, setErrorMessage] = useState(null)
 
   if (error)
     return <span style='color: red'>{error}</span>
+
+  const notifyError = message => {
+    setErrorMessage(message)
+    setTimeout(() => setErrorMessage(null), 5000)
+  }
 
   return (
     <>
@@ -18,12 +25,13 @@ function App() {
         <img src={reactLogo} className="logo react" alt="React logo" />
       </div>
       <h1>GraphQL + React</h1>
-      <PersonForm />
+      <PersonForm notifyError={notifyError} />
       {
         loading
           ? <p>Loading...</p>
           : <Persons persons={data?.findAll} />
       }
+      <Notify errorMessage={errorMessage} />
     </>
   )
 }

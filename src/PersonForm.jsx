@@ -1,10 +1,12 @@
 /* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
+
 import { useAddPerson } from './persons/hooks/custom'
 
 
-export const PersonForm = () => {
+export const PersonForm = ({ notifyError }) => {
 
-    const [addPerson] = useAddPerson()
+    const [addPerson] = useAddPerson({ notifyError })
 
     const handleSubmit = (event) => {
         event.preventDefault()
